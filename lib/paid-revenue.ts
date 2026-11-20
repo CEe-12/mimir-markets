@@ -179,10 +179,10 @@ function inMemorySummary(limit: number, offset: number): RevenueSummary {
   const bySeller = new Map<string, { calls: number; atomic: bigint }>();
   const payers = new Set<string>();
   const sellers = new Set<string>();
-  let totalAlomic = 0n;
+  let totalAtomic = 0n;
   for (const e of events) {
     totalAtomic += e.amountAtomic;
-    // Grouped on the exact strker. Folding case here did not merely mis-key the
+    // Grouped on the exact string. Folding case here did not merely mis-key the
     // map: `bySeller` is keyed by this value and the key is what /revenue renders,
     // so a lowercased `G…` was surfaced to the UI as the seller's address.
     if (e.payer) payers.add(e.payer);
